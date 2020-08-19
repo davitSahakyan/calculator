@@ -7,41 +7,144 @@ const operationButtons = Array.from(
     document.getElementsByClassName("dataOperation")
 );
 const secondOperandElement = document.getElementById("secondOperand");
+const suareOperation = document.getElementById("dataOperationSquare");
+const cubeOperation = document.getElementById("dataOperationCube");
+const xTimeTenOperation = document.getElementById("xTimeTenOperation");
+const factorialOperation = document.getElementById("factorialOperation");
 
 class Calculator {
     constructor(firstOperandElement, secondOperandElement) {
         this.firstOperandElement = firstOperandElement;
         this.secondOperandElement = secondOperandElement;
+        this.firstOperand = "";
+        this.secondOperand = "";
+    }
+
+    square() {
+        let result;
+        const number = parseFloat(this.secondOperand);
+        if (isNaN(number)) return;
+        result = number * number;
+        this.secondOperand = result;
+    }
+    cube() {
+        let result;
+        const number = parseFloat(this.secondOperand);
+        if (isNaN(number)) return;
+        result = number * number * number;
+        this.secondOperand = result;
+    }
+
+    factorialOperation() {
+        const number = parseFloat(this.secondOperand);
+        if (isNaN(number)) return;
+
+        function factorial(number) {
+            let answer = 1;
+            if (number == 0 || number == 1) {
+                return answer;
+            } else {
+                for (var i = number; i >= 1; i--) {
+                    answer = answer * i;
+                }
+                return answer;
+            }
+        }
+        this.secondOperand = factorial(number);
     }
 
     clear() {
-        this.firstOperand = "";
         this.secondOperand = "";
+        this.firstOperand = "";
         this.operation = undefined;
     }
 
-    delete() {}
-
-    appendNumber(number) {
-        this.firstOperand = number;
+    delete() {
+        this.secondOperand = this.secondOperand.toString().slice(0, -1);
     }
 
-    chooseOperation(operation) {}
+    appendNumber(number) {
+        if (number === "." && this.secondOperand.includes(".")) return;
+        this.secondOperand = this.secondOperand.toString() + number.toString();
+    }
 
-    compute() {}
+    chooseOperation(operation) {
+        if (this.secondOperand === "") return;
+        if (this.firstOperand !== "") {
+            this.compute();
+        }
+        this.operation = operation;
+        this.firstOperand = this.secondOperand;
+        this.secondOperand = "";
+    }
+
+    compute() {
+        let result;
+        const previousNumber = parseFloat(this.firstOperand);
+        const nextNumber = parseFloat(this.secondOperand);
+        if (isNaN(previousNumber) || isNaN(nextNumber)) return;
+        if (this.operation === "+") {
+            result = previousNumber + nextNumber;
+        } else if (this.operation === "-") {
+            result = previousNumber - nextNumber;
+        } else if (this.operation === "÷") {
+            result = previousNumber / nextNumber;
+        } else if (this.operation === "×") {
+            result = previousNumber * nextNumber;
+        } else return;
+        this.secondOperand = result;
+        this.operation = undefined;
+        this.firstOperand = "";
+    }
 
     updateDisplay() {
+        this.secondOperandElement.innerText = this.secondOperand;
         this.firstOperandElement.innerText = this.firstOperand;
     }
 }
 
 const calculator = new Calculator(firstOperandElement, secondOperandElement);
 
-console.log(numberButtons);
-
 numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
         calculator.appendNumber(button.innerText);
         calculator.updateDisplay();
     });
+});
+
+operationButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        calculator.chooseOperation(button.innerText);
+        calculator.updateDisplay();
+    });
+});
+
+equalButton.addEventListener("click", () => {
+    calculator.compute();
+    calculator.updateDisplay();
+});
+
+clearButton.addEventListener("click", () => {
+    calculator.clear();
+    calculator.updateDisplay();
+});
+
+deleteButton.addEventListener("click", () => {
+    calculator.delete();
+    calculator.updateDisplay();
+});
+
+suareOperation.addEventListener("click", () => {
+    calculator.square();
+    calculator.updateDisplay();
+});
+
+cubeOperation.addEventListener("click", () => {
+    calculator.cube();
+    calculator.updateDisplay();
+});
+
+factorialOperation.addEventListener("click", () => {
+    calculator.factorialOperation();
+    calculator.updateDisplay();
 });

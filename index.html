@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -15,8 +14,8 @@
         <div class="calculator-container">
             <div class="calculator">
                 <div class="output">
-                    <div class="first-operand"></div>
-                    <div class="second-operand"></div>
+                    <div id="firstOperand" class="first-operand"></div>
+                    <div id="secondOperand" class="second-operand"></div>
                 </div>
                 <div class="actions-container">
                     <div class="calculator-row">
@@ -24,39 +23,39 @@
                         <button>x<sup>3</sup></button>
                         <button>10<sup>x</sup></button>
                         <button>x!</button>
-                        <button class="redButton">C</button>
+                        <button id="dataClear" class="redButton">C</button>
                     </div>
                     <div class="calculator-row">
-                        <button>%</button>
+                        <button class="dataOperation">%</button>
                         <button>+/-</button>
                         <button>√</button>
-                        <button>÷</button>
+                        <button class="dataOperation">÷</button>
                         <button class="smallerFont">Round</button>
                     </div>
                     <div class="calculator-row">
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button>×</button>
+                        <button class="dataNumber">7</button>
+                        <button class="dataNumber">8</button>
+                        <button class="dataNumber">9</button>
+                        <button class="dataOperation">×</button>
                         <button>1/x</button>
                     </div>
                     <div class="calculator-row">
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
-                        <button>-</button>
-                        <button>=</button>
+                        <button class="dataNumber">4</button>
+                        <button class="dataNumber">5</button>
+                        <button class="dataNumber">6</button>
+                        <button class="dataOperation">-</button>
+                        <button id="dataEquals">=</button>
                     </div>
                     <div class="calculator-row">
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button class="largeButton">+</button>
+                        <button class="dataNumber">1</button>
+                        <button class="dataNumber">2</button>
+                        <button class="dataNumber">3</button>
+                        <button class="largeButton dataOperation">+</button>
                     </div>
                     <div class="calculator-row">
-                        <button class="largeButton">0</button>
-                        <button>.</button>
-                        <button class="largeButton">
+                        <button class="dataNumber largeButton">0</button>
+                        <button class="dataNumber">.</button>
+                        <button id="dataDelete" class="largeButton">
                             <i
                                 class="fa fa-arrow-circle-left"
                                 style="font-size: 24px;"

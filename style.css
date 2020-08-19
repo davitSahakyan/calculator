@@ -6,6 +6,7 @@ body {
 button {
     font-size: 2rem;
     width: 18%;
+    cursor: pointer;
 }
 
 /* REUSABLE */
@@ -15,15 +16,21 @@ button {
 .largeButton {
     width: 38.5%;
 }
+/* ////////////////// */
 
 .calculator-container {
     display: flex;
     justify-content: center;
     align-content: center;
 }
-
 .calculator {
     min-width: 400px;
+}
+.output {
+    min-height: 4rem;
+    width: 100%;
+    background-color: grey;
+    color: white;
 }
 
 /* actions-container */

@@ -12,6 +12,18 @@ const cubeOperation = document.getElementById("dataOperationCube");
 const xTimeTenOperation = document.getElementById("xTimeTenOperation");
 const factorialOperation = document.getElementById("factorialOperation");
 
+function factorial(number) {
+    let answer = 1;
+    if (number == 0 || number == 1) {
+        return answer;
+    } else {
+        for (var i = number; i >= 1; i--) {
+            answer = answer * i;
+        }
+        return answer;
+    }
+}
+
 class Calculator {
     constructor(firstOperandElement, secondOperandElement) {
         this.firstOperandElement = firstOperandElement;
@@ -35,21 +47,22 @@ class Calculator {
         this.secondOperand = result;
     }
 
+    xTimeTenOperation() {
+        let result = 10;
+        const number = parseFloat(this.secondOperand);
+        if (isNaN(number)) return;
+        if (number === 0) {
+            result = 1;
+        }
+        for (let i = 0; i < number - 1; i++) {
+            result = result * 10;
+        }
+        this.secondOperand = result;
+    }
+
     factorialOperation() {
         const number = parseFloat(this.secondOperand);
         if (isNaN(number)) return;
-
-        function factorial(number) {
-            let answer = 1;
-            if (number == 0 || number == 1) {
-                return answer;
-            } else {
-                for (var i = number; i >= 1; i--) {
-                    answer = answer * i;
-                }
-                return answer;
-            }
-        }
         this.secondOperand = factorial(number);
     }
 
@@ -146,5 +159,10 @@ cubeOperation.addEventListener("click", () => {
 
 factorialOperation.addEventListener("click", () => {
     calculator.factorialOperation();
+    calculator.updateDisplay();
+});
+
+xTimeTenOperation.addEventListener("click", () => {
+    calculator.xTimeTenOperation();
     calculator.updateDisplay();
 });

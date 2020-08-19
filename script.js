@@ -1,18 +1,18 @@
 const clearButton = document.getElementById("dataClear");
+const cubeOperation = document.getElementById("dataOperationCube");
 const deleteButton = document.getElementById("dataDelete");
 const equalButton = document.getElementById("dataEquals");
+const factorialOperation = document.getElementById("factorialOperation");
 const firstOperandElement = document.getElementById("firstOperand");
 const numberButtons = Array.from(document.getElementsByClassName("dataNumber"));
+const oneDividedOnX = document.getElementById("oneDividedOnX");
 const operationButtons = Array.from(
     document.getElementsByClassName("dataOperation")
 );
+const roundOperation = document.getElementById("roundOperation");
 const secondOperandElement = document.getElementById("secondOperand");
 const suareOperation = document.getElementById("dataOperationSquare");
-const cubeOperation = document.getElementById("dataOperationCube");
 const xTimeTenOperation = document.getElementById("xTimeTenOperation");
-const factorialOperation = document.getElementById("factorialOperation");
-const roundOperation = document.getElementById("roundOperation");
-const oneDividedOnX = document.getElementById("oneDividedOnX");
 
 function factorial(number) {
     let answer = 1;

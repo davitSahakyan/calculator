@@ -5,8 +5,67 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
     </head>
     <body>
+        <div class="calculator-container">
+            <div class="calculator">
+                <div class="output">
+                    <div class="first-operand"></div>
+                    <div class="second-operand"></div>
+                </div>
+                <div class="actions-container">
+                    <div class="calculator-row">
+                        <button>x<sup>2</sup></button>
+                        <button>x<sup>3</sup></button>
+                        <button>10<sup>x</sup></button>
+                        <button>x!</button>
+                        <button class="redButton">C</button>
+                    </div>
+                    <div class="calculator-row">
+                        <button>%</button>
+                        <button>+/-</button>
+                        <button>√</button>
+                        <button>÷</button>
+                        <button class="smallerFont">Round</button>
+                    </div>
+                    <div class="calculator-row">
+                        <button>7</button>
+                        <button>8</button>
+                        <button>9</button>
+                        <button>×</button>
+                        <button>1/x</button>
+                    </div>
+                    <div class="calculator-row">
+                        <button>4</button>
+                        <button>5</button>
+                        <button>6</button>
+                        <button>-</button>
+                        <button>=</button>
+                    </div>
+                    <div class="calculator-row">
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button class="largeButton">+</button>
+                    </div>
+                    <div class="calculator-row">
+                        <button class="largeButton">0</button>
+                        <button>.</button>
+                        <button class="largeButton">
+                            <i
+                                class="fa fa-arrow-circle-left"
+                                style="font-size: 24px;"
+                            ></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>

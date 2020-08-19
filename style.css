@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    font-size: 2rem;
+    width: 18%;
+}
+
+/* REUSABLE */
+.smallerFont {
+    font-size: 0.7rem;
+}
+.largeButton {
+    width: 38.5%;
+}
+
+.calculator-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.calculator {
+    min-width: 400px;
+}
+
+/* actions-container */
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.calculator-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.1rem;
+}

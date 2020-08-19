@@ -9,8 +9,10 @@ const oneDividedOnX = document.getElementById("oneDividedOnX");
 const operationButtons = Array.from(
     document.getElementsByClassName("dataOperation")
 );
+const plusMinus = document.getElementById("plusMinus");
 const roundOperation = document.getElementById("roundOperation");
 const secondOperandElement = document.getElementById("secondOperand");
+const squareRoot = document.getElementById("squareRoot");
 const suareOperation = document.getElementById("dataOperationSquare");
 const xTimeTenOperation = document.getElementById("xTimeTenOperation");
 
@@ -24,6 +26,16 @@ function factorial(number) {
         }
         return answer;
     }
+}
+function squareRt(number) {
+    let num,
+        num2 = number / 2;
+
+    do {
+        num = num2;
+        num2 = (num + number / num) / 2;
+    } while (num !== num2);
+    return num;
 }
 
 class Calculator {
@@ -68,6 +80,18 @@ class Calculator {
         this.secondOperand = factorial(number);
     }
 
+    squareRoot() {
+        let result;
+        const number = parseFloat(this.secondOperand);
+        if (isNaN(number)) return;
+        if (number > 0) {
+            result = squareRt(number);
+        } else {
+            result = "ERROR";
+        }
+        this.secondOperand = result;
+    }
+
     roundOperation() {
         let result;
         if (this.secondOperand.includes(".")) {
@@ -88,6 +112,20 @@ class Calculator {
         const number = parseFloat(this.secondOperand);
         if (isNaN(number)) return;
         result = 1 / number;
+        this.secondOperand = result;
+    }
+
+    plusMinus() {
+        let result;
+        const number = parseFloat(this.secondOperand);
+        if (isNaN(number)) return;
+        if (number > 0) {
+            result = -number;
+        } else if (number < 0) {
+            result = number * -1;
+        } else {
+            result = number;
+        }
         this.secondOperand = result;
     }
 
@@ -194,8 +232,18 @@ xTimeTenOperation.addEventListener("click", () => {
     calculator.updateDisplay();
 });
 
+plusMinus.addEventListener("click", () => {
+    calculator.plusMinus();
+    calculator.updateDisplay();
+});
+
 roundOperation.addEventListener("click", () => {
     calculator.roundOperation();
+    calculator.updateDisplay();
+});
+
+squareRoot.addEventListener("click", () => {
+    calculator.squareRoot();
     calculator.updateDisplay();
 });
 

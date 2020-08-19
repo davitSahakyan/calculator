@@ -11,6 +11,8 @@ const suareOperation = document.getElementById("dataOperationSquare");
 const cubeOperation = document.getElementById("dataOperationCube");
 const xTimeTenOperation = document.getElementById("xTimeTenOperation");
 const factorialOperation = document.getElementById("factorialOperation");
+const roundOperation = document.getElementById("roundOperation");
+const oneDividedOnX = document.getElementById("oneDividedOnX");
 
 function factorial(number) {
     let answer = 1;
@@ -66,6 +68,29 @@ class Calculator {
         this.secondOperand = factorial(number);
     }
 
+    roundOperation() {
+        let result;
+        if (this.secondOperand.includes(".")) {
+            let splitedInput = this.secondOperand.split(".");
+            let splitedLastPart = splitedInput[1];
+            let firstCharacter = splitedLastPart[0];
+            if (firstCharacter >= 5) {
+                result = parseFloat(splitedInput[0]) + 1;
+            } else {
+                result = parseFloat(splitedInput[0]);
+            }
+        }
+        this.secondOperand = result;
+    }
+
+    oneDividedOnX() {
+        let result;
+        const number = parseFloat(this.secondOperand);
+        if (isNaN(number)) return;
+        result = 1 / number;
+        this.secondOperand = result;
+    }
+
     clear() {
         this.secondOperand = "";
         this.firstOperand = "";
@@ -104,6 +129,8 @@ class Calculator {
             result = previousNumber / nextNumber;
         } else if (this.operation === "×") {
             result = previousNumber * nextNumber;
+        } else if (this.operation === "%") {
+            result = (previousNumber / 100) * nextNumber;
         } else return;
         this.secondOperand = result;
         this.operation = undefined;
@@ -164,5 +191,15 @@ factorialOperation.addEventListener("click", () => {
 
 xTimeTenOperation.addEventListener("click", () => {
     calculator.xTimeTenOperation();
+    calculator.updateDisplay();
+});
+
+roundOperation.addEventListener("click", () => {
+    calculator.roundOperation();
+    calculator.updateDisplay();
+});
+
+oneDividedOnX.addEventListener("click", () => {
+    calculator.oneDividedOnX();
     calculator.updateDisplay();
 });
